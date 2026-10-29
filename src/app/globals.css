@@ -1,0 +1,317 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   DEMOCRAT.IA - tema do sistema de gestao
+   ========================================================================== */
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  --color-marca-50: #eef2ff;
+  --color-marca-100: #e0e7ff;
+  --color-marca-200: #c7d2fe;
+  --color-marca-300: #a5b4fc;
+  --color-marca-400: #818cf8;
+  --color-marca-500: #6366f1;
+  --color-marca-600: #4f46e5;
+  --color-marca-700: #4338ca;
+  --color-marca-800: #3730a3;
+  --color-marca-900: #312e81;
+  --color-marca-950: #1e1b4b;
+}
+
+:root {
+  --fundo: #f6f7fb;
+  --superficie: #ffffff;
+  --superficie-2: #fbfbfe;
+  --borda: #e4e6ef;
+  --borda-forte: #cfd2e3;
+  --texto: #1b1f2e;
+  --texto-suave: #606478;
+  --texto-fraco: #8c90a4;
+  --sidebar: #15172b;
+  --sidebar-texto: #b9bdd4;
+  --sidebar-ativo: #272a4a;
+  --positivo: #047857;
+  --positivo-bg: #ecfdf5;
+  --negativo: #b91c1c;
+  --negativo-bg: #fef2f2;
+  --atencao: #b45309;
+  --atencao-bg: #fffbeb;
+  --info: #1d4ed8;
+  --info-bg: #eff6ff;
+  --destaque: #4f46e5;
+  --destaque-bg: #eef2ff;
+  --neutro: #475569;
+  --neutro-bg: #f1f5f9;
+  --sombra: 0 1px 2px rgba(16, 20, 40, 0.05), 0 1px 3px rgba(16, 20, 40, 0.04);
+  --sombra-md: 0 4px 12px rgba(16, 20, 40, 0.08);
+  --sombra-lg: 0 18px 40px rgba(16, 20, 40, 0.16);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #0e1020;
+    --superficie: #171a2e;
+    --superficie-2: #1d2039;
+    --borda: #2a2e4a;
+    --borda-forte: #3a3f61;
+    --texto: #e8eaf4;
+    --texto-suave: #a2a7c0;
+    --texto-fraco: #777d99;
+    --sidebar: #0a0c18;
+    --sidebar-texto: #a2a7c0;
+    --sidebar-ativo: #22264180;
+    --positivo: #34d399;
+    --positivo-bg: #052e22;
+    --negativo: #f87171;
+    --negativo-bg: #3b0d0d;
+    --atencao: #fbbf24;
+    --atencao-bg: #3b2708;
+    --info: #60a5fa;
+    --info-bg: #0c2242;
+    --destaque: #a5b4fc;
+    --destaque-bg: #1f1f45;
+    --neutro: #cbd5e1;
+    --neutro-bg: #242840;
+    --sombra: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --sombra-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+    --sombra-lg: 0 18px 40px rgba(0, 0, 0, 0.55);
+  }
+}
+
+* {
+  border-color: var(--borda);
+}
+
+html,
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--destaque-bg);
+  color: var(--texto);
+}
+
+/* -------------------------------- Camadas -------------------------------- */
+
+@utility superficie {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 0.75rem;
+  box-shadow: var(--sombra);
+}
+
+/* ------------------------------- Scrollbar ------------------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--borda-forte);
+  border-radius: 999px;
+  border: 2px solid var(--fundo);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--texto-fraco);
+}
+
+/* ------------------------------ Formularios ------------------------------ */
+
+.campo {
+  width: 100%;
+  background: var(--superficie);
+  border: 1px solid var(--borda-forte);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.875rem;
+  color: var(--texto);
+  outline: none;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+.campo:focus {
+  border-color: var(--destaque);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--destaque) 18%, transparent);
+}
+.campo:disabled {
+  background: var(--neutro-bg);
+  color: var(--texto-fraco);
+}
+textarea.campo {
+  min-height: 5rem;
+  resize: vertical;
+  line-height: 1.5;
+}
+select.campo {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--texto-fraco) 50%),
+    linear-gradient(135deg, var(--texto-fraco) 50%, transparent 50%);
+  background-position: calc(100% - 15px) center, calc(100% - 10px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 1.75rem;
+}
+
+.rotulo {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--texto-suave);
+  margin-bottom: 0.3rem;
+}
+
+/* -------------------------------- Botoes --------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primario {
+  background: var(--color-marca-600);
+  color: #fff;
+}
+.btn-primario:hover:not(:disabled) {
+  background: var(--color-marca-700);
+}
+.btn-secundario {
+  background: var(--superficie);
+  border-color: var(--borda-forte);
+  color: var(--texto);
+}
+.btn-secundario:hover:not(:disabled) {
+  background: var(--superficie-2);
+  border-color: var(--texto-fraco);
+}
+.btn-fantasma {
+  background: transparent;
+  color: var(--texto-suave);
+}
+.btn-fantasma:hover:not(:disabled) {
+  background: var(--neutro-bg);
+  color: var(--texto);
+}
+.btn-perigo {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--negativo) 40%, transparent);
+  color: var(--negativo);
+}
+.btn-perigo:hover:not(:disabled) {
+  background: var(--negativo-bg);
+}
+.btn-sm {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+/* -------------------------------- Badges --------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 999px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.badge-neutral  { background: var(--neutro-bg);    color: var(--neutro);   border-color: color-mix(in srgb, var(--neutro) 22%, transparent); }
+.badge-info     { background: var(--info-bg);      color: var(--info);     border-color: color-mix(in srgb, var(--info) 25%, transparent); }
+.badge-success  { background: var(--positivo-bg);  color: var(--positivo); border-color: color-mix(in srgb, var(--positivo) 25%, transparent); }
+.badge-warning  { background: var(--atencao-bg);   color: var(--atencao);  border-color: color-mix(in srgb, var(--atencao) 25%, transparent); }
+.badge-danger   { background: var(--negativo-bg);  color: var(--negativo); border-color: color-mix(in srgb, var(--negativo) 25%, transparent); }
+.badge-accent   { background: var(--destaque-bg);  color: var(--destaque); border-color: color-mix(in srgb, var(--destaque) 25%, transparent); }
+
+/* -------------------------------- Tabela --------------------------------- */
+
+.tabela {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8125rem;
+}
+.tabela thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--superficie-2);
+  border-bottom: 1px solid var(--borda);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texto-fraco);
+  white-space: nowrap;
+}
+.tabela tbody td {
+  border-bottom: 1px solid var(--borda);
+  padding: 0.55rem 0.75rem;
+  vertical-align: top;
+}
+.tabela tbody tr:hover td {
+  background: var(--superficie-2);
+}
+.tabela tbody tr:last-child td {
+  border-bottom: none;
+}
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* -------------------------------- Animacao ------------------------------- */
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+.aparecer {
+  animation: aparecer 0.16s ease-out;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+.girando {
+  animation: girar 0.7s linear infinite;
+}
+
+/* -------------------------------- Impressao ------------------------------ */
+
+@media print {
+  .nao-imprimir {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}

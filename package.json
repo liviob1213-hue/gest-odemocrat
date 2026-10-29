@@ -1,0 +1,38 @@
+{
+  "name": "democratia-gestao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de gestao e governanca da DEMOCRAT.IA - implementa o Manual de Gestao v1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:conectar": "node scripts/conectar.mjs",
+    "db:instalar": "node scripts/instalar-banco.mjs",
+    "db:testar": "node scripts/testar-conexao.mjs",
+    "db:validar": "node scripts/validar-sql.mjs",
+    "db:local": "node scripts/banco-local.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.456.0",
+    "next": "^15.1.0",
+    "pg": "^8.23.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.13.3",
+    "server-only": "^0.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.13",
+    "@electric-sql/pglite-socket": "^0.2.16",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.9.0",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.3"
+  }
+}

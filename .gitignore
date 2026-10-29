@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.next-build/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Senha do banco - NUNCA subir para o repositorio
+.env
+.env.local
+.env*.local
+
+# Backups baixados pelo sistema
+backups/
+
+.DS_Store
